@@ -22,7 +22,7 @@ class TeamsController < ApplicationController
                   #before { @micropost = user.microposts.build(user_id: current_user.id) }
                   @member.save
       flash[:success] = "New Team created!"
-      redirect_to current_user
+      redirect_to @team
     else
      # flash.now[:error] = 'Invalid email/password combination'
       render 'new'
