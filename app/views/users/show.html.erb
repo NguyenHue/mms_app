@@ -8,5 +8,37 @@
         <h2><%= @user.age %></h2>
       </h1>
     </section>
+
+     <section>
+        <div class="span8">
+    <% if @user.teams.any? %>
+      <h3>Owned Teams (<%= @user.teams.count %>)</h3>
+      <ol class="teams">
+        <% @user.teams.each do |team| %>
+                    <li>
+                      <%= link_to team.name, team %>
+                      (<%= team.members.count %> members)
+                    </li>
+                  <% end %>
+      </ol>
+    <% end %>
+  </div>
+    </section>
   </aside>
+
+ <div class="span8">
+    <% if @user.joined_teams.any? %>
+      <h3>Joined Teams (<%= @user.joined_teams.count %>)</h3>
+      <ol class="teams">
+        <% @teams.each do |team| %>
+                    <li>
+                      <%= link_to team.team.name, team.team %>
+                      (<%= team.team.members.count %> members)
+                    </li>
+                  <% end %>
+      </ol>
+      <%= will_paginate @teams %>
+    <% end %>
+  </div>
+</div>
 </div>

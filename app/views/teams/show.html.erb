@@ -6,7 +6,7 @@
         <%= @team.name %>
       </h1>
       <span>
-                         Owner: <%= link_to @team.owner.name, @team.owner %>
+          Owner: <%= link_to @team.owner.name, @team.owner %>
         </span>
     </section>
   </aside>
@@ -21,4 +21,5 @@
       <%= will_paginate @members %>
     <% end %>
   </div>
+
 </div>
