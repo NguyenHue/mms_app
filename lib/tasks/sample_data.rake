@@ -17,5 +17,24 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    users = User.all(limit: 10)
+    20.times do
+      users.each { |user| 
+              name = Faker::Lorem.sentence(5)
+
+              team = user.teams.create!(name: name) 
+              team.members.create!(user_id: user.id)
+      }
+    end
+
+
+    teams = Team.all()
+    teams.each { |team| 
+                20.times do
+                user = User.first(:offset => rand(User.count))
+                TeamMember.create!(user_id:  user.id, team_id: team.id) 
+            #    team.members.create!(user_id:  user.id) if !team.members.find_by(user_id: user.id).nil?
+            end
+    }
   end
 end

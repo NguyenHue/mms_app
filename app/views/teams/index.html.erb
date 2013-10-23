@@ -1,0 +1,12 @@
+<% provide(:title, 'All users') %>
+<h1>All Teams</h1>
+<%= will_paginate %>
+<ul class="teams">
+  <% @teams.each do |team| %>
+    <li>
+      <%= link_to team.name, team %>
+      (by <%= team.owner.name %>) (<%= team.members.count %> members)
+    </li>
+  <% end %>
+</ul>
+<%= will_paginate %>
