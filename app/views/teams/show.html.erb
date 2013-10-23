@@ -15,9 +15,9 @@
            <%= render 'join_form' if signed_in? %>
     <% if @team.members.any? %>
       <h3>Members (<%= @team.members.count %>)</h3>
-      <ol class="members">
+      <ul class="members">
         <%= render partial: 'teams/member', collection: @members %>
-      </ol>
+      </ul>
       <%= will_paginate @members %>
     <% end %>
   </div>
